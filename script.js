@@ -36,3 +36,20 @@ fetch(apiUrl)
         console.error('Error al obtener los datos de la API:', error);
         villainListDiv.innerHTML = '<p>Error al cargar los personajes.</p>';
     });
+
+    const navButtons = document.querySelectorAll('.c-nav button');
+
+    // Función para remover la clase 'active' de todos los botones
+    function removeActiveClass() {
+        navButtons.forEach(button => {
+            button.classList.remove('active');
+        });
+    }
+    
+    // Función para añadir la clase 'active' al botón actual
+    function setActiveButton(index) {
+        removeActiveClass();
+        if (navButtons[index]) {
+            navButtons[index].classList.add('active');
+        }
+    }
