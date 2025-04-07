@@ -53,3 +53,31 @@ fetch(apiUrl)
             navButtons[index].classList.add('active');
         }
     }
+
+    function agregarFavorito(characterName) {
+        let favoritos = localStorage.getItem('favoritos');
+        favoritos = favoritos ? JSON.parse(favoritos) : [];
+    
+        if (!favoritos.includes(characterName)) {
+            favoritos.push(characterName);
+            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+            alert(`${characterName} ha sido añadido a tus favoritos.`); // Opcional: mostrar un mensaje
+            mostrarfavoritos(); // Actualizar la vista de favoritos si está abierta
+        } else {
+            alert(`${characterName} ya está en tus favoritos.`); // Opcional: mostrar un mensaje
+        }
+    }
+    
+    function eliminarFavorito(characterName) {
+        let favoritos = localStorage.getItem('favoritos');
+        favoritos = favoritos ? JSON.parse(favoritos) : [];
+    
+        const index = favoritos.indexOf(characterName);
+        if (index > -1) {
+            favoritos.splice(index, 1);
+            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+            alert(`${characterName} ha sido eliminado de tus favoritos.`); // Opcional: mostrar un mensaje
+            mostrarfavoritos(); // Actualizar la vista de favoritos
+        }
+    }
+    
